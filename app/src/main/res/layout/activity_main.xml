@@ -12,10 +12,12 @@
 
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5dip">
+        android:padding="5dip"
+        android:orientation="vertical"
+        >
 
         <Button
             android:id="@+id/personalSample"
@@ -32,7 +34,6 @@
             android:onClick="@{() -> mainPresenter.onTypeClick(MainOpenType.Recycler_Sample)}"
             android:text="Recycler Sample"
             android:textAllCaps="false"
-            android:layout_below="@+id/personalSample"
             />
 
         <Button
@@ -42,7 +43,6 @@
             android:onClick="@{() -> mainPresenter.onTypeClick(MainOpenType.REQ_OKHTTP3)}"
             android:text="OK Photo"
             android:textAllCaps="false"
-            android:layout_below="@+id/recyclerSample"
             />
 
         <Button
@@ -52,8 +52,7 @@
             android:onClick="@{() -> mainPresenter.onTypeClick(MainOpenType.REQ_RETROFIT2)}"
             android:text="Retrofit Photo"
             android:textAllCaps="false"
-            android:layout_below="@+id/okPhotoList"
             />
 
-    </RelativeLayout>
+    </LinearLayout>
 </layout>
