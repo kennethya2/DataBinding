@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class=".ProfileBinding">
+
+        <variable
+            name="presenter"
+            type="com.leafplain.demo.databinding.presenter.profile.ProfilePresenter"/>
+
+        <variable
+            name="profile"
+            type="com.leafplain.demo.databinding.datamodel.view.ObservableProfile"/>
+        <variable
+            name="newProfile"
+            type="com.leafplain.demo.databinding.datamodel.view.ObservableProfile"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dip">
+
+        <!--<EditText-->
+            <!--android:id="@+id/firstNameET"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:hint="@{profile.firstName}"/>-->
+        <!--<EditText-->
+            <!--android:id="@+id/lastNameET"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@{profile.lastName}"-->
+            <!--android:layout_below="@+id/firstNameET"-->
+            <!--/>-->
+
+        <!-- 雙向綁定 -->
+        <EditText
+            android:id="@+id/firstNameET"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="Edit FirstName"
+            android:text="@={profile.firstName}"
+            />
+        <EditText
+            android:id="@+id/lastNameET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Edit LastName"
+            android:text="@={profile.lastName}"
+            android:layout_below="@+id/firstNameET"
+            />
+
+        <Button
+            android:id="@+id/editBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:text="Edit Profile"
+            android:textAllCaps="false"
+            android:layout_below="@+id/lastNameET"
+            android:onClick="@{() -> presenter.editProfile()}"
+            android:enabled="@{profile.firstName.length() > 1 &amp;&amp; profile.lastName.length()  > 1}"
+            />
+
+
+        <RelativeLayout
+            android:id="@+id/firstRL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editBTN"
+            >
+            <TextView
+                android:id="@+id/firstTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FirstName:"
+                android:textSize="16sp"
+                android:layout_centerVertical="true"
+                />
+            <TextView
+                android:id="@+id/firstNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:minWidth="100dp"
+                android:text="@{newProfile.firstName}"
+                android:gravity="left|center_vertical"
+                android:layout_toRightOf="@+id/firstTitle"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lastRL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/firstRL"
+            >
+            <TextView
+                android:id="@+id/lastTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LastName:"
+                android:textSize="16sp"
+                android:layout_centerVertical="true"
+                />
+            <TextView
+                android:id="@+id/lastNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:minWidth="100dp"
+                android:text="@{newProfile.lastName}"
+                android:gravity="left|center_vertical"
+                android:layout_toRightOf="@+id/lastTitle"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

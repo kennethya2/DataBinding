@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.leafplain.demo.databinding.MainActivity.MainOpenType"/>
+        <variable
+            name="mainPresenter"
+            type="com.leafplain.demo.databinding.presenter.MainPresenter"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dip">
+
+        <Button
+            android:id="@+id/personalSample"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> mainPresenter.onTypeClick(MainOpenType.Personal_Sample)}"
+            android:text="Personal Profile"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/recyclerSample"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> mainPresenter.onTypeClick(MainOpenType.Recycler_Sample)}"
+            android:text="Recycler Sample"
+            android:textAllCaps="false"
+            android:layout_below="@+id/personalSample"
+            />
+
+        <Button
+            android:id="@+id/okPhotoList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> mainPresenter.onTypeClick(MainOpenType.REQ_OKHTTP3)}"
+            android:text="OK Photo"
+            android:textAllCaps="false"
+            android:layout_below="@+id/recyclerSample"
+            />
+
+        <Button
+            android:id="@+id/retrofitPhotoList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> mainPresenter.onTypeClick(MainOpenType.REQ_RETROFIT2)}"
+            android:text="Retrofit Photo"
+            android:textAllCaps="false"
+            android:layout_below="@+id/okPhotoList"
+            />
+
+    </RelativeLayout>
+</layout>
