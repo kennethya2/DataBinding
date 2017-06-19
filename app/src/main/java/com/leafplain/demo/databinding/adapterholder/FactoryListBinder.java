@@ -2,8 +2,11 @@ package com.leafplain.demo.databinding.adapterholder;
 
 import android.support.v7.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
 import com.leafplain.demo.databinding.BR;
-import com.leafplain.demo.databinding.MyApplication;
+import com.leafplain.demo.databinding.R;
 import com.leafplain.demo.databinding.databinding.HolderPhotoPicBinding;
 import com.leafplain.demo.databinding.databinding.HolderTitleBinding;
 import com.leafplain.demo.databinding.datamodel.info.ListItemInfo;
@@ -34,10 +37,21 @@ public class FactoryListBinder {
             BaseCustomHolder holder = (BaseCustomHolder) viewHolder;
             HolderPhotoPicBinding mHolderPhotoPicBinding = (HolderPhotoPicBinding) holder.getBinding();
             String url = (String) item.data;
-            MyApplication.imageLoader.displayImage(url,
-                    mHolderPhotoPicBinding.photoPicIV,
-                    MyApplication.options,
-                    MyApplication.animateFirstListener);
+
+            RequestOptions options = new RequestOptions()
+                    .placeholder(R.mipmap.ic_launcher)
+                    .error(R.mipmap.ic_launcher_round)
+                    .dontTransform();
+            Glide.with(mHolderPhotoPicBinding.photoPicIV.getContext())
+                    .load(url)
+                    .apply(options)
+                    .transition(new DrawableTransitionOptions().crossFade(100))
+                    .into(mHolderPhotoPicBinding.photoPicIV);
+
+//            MyApplication.imageLoader.displayImage(url,
+//                    mHolderPhotoPicBinding.photoPicIV,
+//                    MyApplication.options,
+//                    MyApplication.animateFirstListener);
         }
     }
 }
