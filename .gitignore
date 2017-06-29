@@ -102,9 +102,9 @@ Thumbs.db
 .mtj.tmp/
 
 # Package Files #
-*.jar
-*.war
-*.ear
+# *.jar
+# *.war
+# *.ear
 
 # virtual machine crash logs (Reference: http://www.java.com/en/download/help/error_hotspot.xml)
 hs_err_pid*
@@ -128,7 +128,7 @@ fabric.properties
 
 ### AndroidStudio Patch ###
 # Google Services plugin
-google-services.json
+# google-services.json
 
 !/gradle/wrapper/gradle-wrapper.jar
 
