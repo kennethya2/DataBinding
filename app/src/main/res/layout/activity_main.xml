@@ -53,6 +53,14 @@
             android:text="Retrofit Photo"
             android:textAllCaps="false"
             />
+        <Button
+            android:id="@+id/retrofitRXPhotoList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> mainPresenter.onTypeClick(MainOpenType.REQ_RETROFIT2_RX)}"
+            android:text="RetrofitRX Photo"
+            android:textAllCaps="false"
+            />
 
     </LinearLayout>
 </layout>

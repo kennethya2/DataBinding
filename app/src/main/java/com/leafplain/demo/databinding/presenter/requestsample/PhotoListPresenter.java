@@ -7,6 +7,7 @@ import com.leafplain.demo.databinding.base.basecontract.LoadingContract;
 import com.leafplain.demo.databinding.base.basecontrol.ParsingControllable;
 import com.leafplain.demo.databinding.datamodel.info.ListItemInfo;
 import com.leafplain.demo.databinding.datamodel.view.RecyclerBindingViewModel;
+import com.leafplain.demo.databinding.taskcontrol.LoadRedControllerRetroRX;
 import com.leafplain.demo.databinding.taskcontrol.LoadRedControllerRetrofit;
 import com.leafplain.demo.databinding.taskcontrol.LoadReqControllerOKHttp;
 
@@ -40,6 +41,9 @@ public class PhotoListPresenter implements LoadingContract.Presenter{
                 break;
             case MainActivity.MainOpenType.REQ_RETROFIT2:
                 requestController = new LoadRedControllerRetrofit();
+                break;
+            case MainActivity.MainOpenType.REQ_RETROFIT2_RX:
+                requestController = new LoadRedControllerRetroRX();
                 break;
         }
         requestController.setResponseListener(listener);
