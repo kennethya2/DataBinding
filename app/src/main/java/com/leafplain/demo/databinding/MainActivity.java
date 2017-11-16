@@ -26,5 +26,6 @@ public class MainActivity extends AppCompatActivity {
         public static final int Recycler_Sample = 2;
         public static final int REQ_OKHTTP3     = 3;
         public static final int REQ_RETROFIT2   = 4;
+        public static final int REQ_RETROFIT2_RX= 5;
     }
 }
