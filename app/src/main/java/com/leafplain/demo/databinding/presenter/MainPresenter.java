@@ -58,6 +58,12 @@ public class MainPresenter implements MainContract.Presenter<Integer>{
                 intent.putExtras(extras);
                 intent.setClass(context, PhotoListReqActivity.class);
                 break;
+            case MainActivity.MainOpenType.REQ_RETROFIT2_RX_Encap:
+                Toast.makeText(context, "REQ_RETROFIT2_RX_Encap",Toast.LENGTH_SHORT).show();
+                extras.putInt(PhotoListReqActivity.PARAM_REQ_TYPE, MainActivity.MainOpenType.REQ_RETROFIT2_RX_Encap);
+                intent.putExtras(extras);
+                intent.setClass(context, PhotoListReqActivity.class);
+                break;
         }
         context.startActivity(intent);
     }
