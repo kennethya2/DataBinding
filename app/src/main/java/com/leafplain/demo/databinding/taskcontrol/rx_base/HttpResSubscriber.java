@@ -15,6 +15,8 @@ public class HttpResSubscriber<T> extends Subscriber<T> {
     private ResCallback mResCallback;
     public interface ResCallback<T>{
         void onResult(T list);
+        void onError(HttpResErrorInfo error);
+        void tokenExpired();
     }
     public HttpResSubscriber(ResCallback mResCallback){
         this.mResCallback = mResCallback;
@@ -32,9 +34,11 @@ public class HttpResSubscriber<T> extends Subscriber<T> {
         // HTTP != 200 or connect error
         HttpResErrorInfo errorInfo = HttpResErrorParser.getInstance().convertError(e);
         if(errorInfo.resInfo!=null && parseResOnErrorType(errorInfo.resInfo) == ResOnErrorType.Type_Token_Expired){
-            //getRefreshToken();
+            mResCallback.tokenExpired();
             return;
         }
+        mResCallback.onError(errorInfo);
+
         Log.d(TAG, "----");
     }
 

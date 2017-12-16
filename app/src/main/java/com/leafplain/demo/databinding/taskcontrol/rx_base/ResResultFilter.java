@@ -10,7 +10,8 @@ public class ResResultFilter<T> implements Func1<BaseResInfo<T>, T> {
 
     private FilterCallback callback;
     public interface FilterCallback<T>{
-        void onResult(BaseResInfo errInfo);
+        void onSuccess(BaseResInfo errInfo);
+        void onNotSuccess(BaseResInfo errInfo);
     }
     public ResResultFilter(FilterCallback callback){
         this.callback = callback;
@@ -19,9 +20,10 @@ public class ResResultFilter<T> implements Func1<BaseResInfo<T>, T> {
     @Override
     public T call(BaseResInfo<T> baseResInfo) {
         if(resSuccessValidate(baseResInfo.status, baseResInfo.errcode)){
+            callback.onSuccess(baseResInfo);
             return baseResInfo.data;
         }else{
-            callback.onResult(baseResInfo);
+            callback.onNotSuccess(baseResInfo);
             return baseResInfo.data;
         }
     }
