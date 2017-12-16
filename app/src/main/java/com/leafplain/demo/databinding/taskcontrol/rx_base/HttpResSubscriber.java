@@ -53,7 +53,7 @@ public class HttpResSubscriber<T> extends Subscriber<T> {
         int Type_Token_Expired  = 1;
     }
 
-    public static int parseResOnErrorType(BaseResErrorInfo error){
+    public int parseResOnErrorType(BaseResErrorInfo error){
         int type = ResOnErrorType.Type_None;
         if(error.status == 401 && error.errcode.equalsIgnoreCase("T00001")){
             type = ResOnErrorType.Type_Token_Expired;
