@@ -2,11 +2,14 @@ package com.leafplain.demo.databinding.taskcontrol;
 
 import android.util.Log;
 
+import com.leafplain.demo.databinding.DevLog;
 import com.leafplain.demo.databinding.base.basecontrol.ParsingControllable;
 import com.leafplain.demo.databinding.datamodel.info.APIInfo;
 import com.leafplain.demo.databinding.datamodel.info.ListItemInfo;
 import com.leafplain.demo.databinding.presenter.requestsample.PhotoListPresenter;
 import com.leafplain.demo.databinding.taskcontrol.rx_base.BaseResInfo;
+import com.leafplain.demo.databinding.taskcontrol.rx_base.HttpManager;
+import com.leafplain.demo.databinding.taskcontrol.rx_base.HttpParam;
 import com.leafplain.demo.databinding.taskcontrol.rx_base.HttpResErrorInfo;
 import com.leafplain.demo.databinding.taskcontrol.rx_base.HttpResSubscriber;
 import com.leafplain.demo.databinding.taskcontrol.rx_base.ResResultFilter;
@@ -52,7 +55,8 @@ public class LoadRedControllerRetroRXEncap implements ParsingControllable<PhotoL
 
     @Override
     public void startParsing() {
-        type2();
+//        type2();
+        type3();
     }
 
     public void type2() {
@@ -85,6 +89,20 @@ public class LoadRedControllerRetroRXEncap implements ParsingControllable<PhotoL
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(filter)
                 .subscribe(subscriber);
+    }
+
+    private void type3(){
+        DevLog.d(TAG,"type3");
+        Retrofit retrofit           = HttpManager.getInstance().getRetorfit();
+        Observable observable       = retrofit.create(PhotoListService.class).getList();
+        HttpResSubscriber<List<APIInfo.PhotoInfo>> subscriber= new HttpResSubscriber(resultCallback);
+        ResResultFilter<List<APIInfo.PhotoInfo>> filter      = new ResResultFilter(filterCallback);
+
+        HttpParam mHttpParam    = new HttpParam();
+        mHttpParam.observable   = observable;
+        mHttpParam.subscriber   = subscriber;
+        mHttpParam.filter       = filter;
+        HttpManager.getInstance().startRequest(mHttpParam);
     }
 
     private ResResultFilter.FilterCallback filterCallback = new ResResultFilter.FilterCallback<List<APIInfo.PhotoInfo>>() {
