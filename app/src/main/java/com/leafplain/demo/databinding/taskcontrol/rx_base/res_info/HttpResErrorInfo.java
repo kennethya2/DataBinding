@@ -1,4 +1,4 @@
-package com.leafplain.demo.databinding.taskcontrol.rx_base;
+package com.leafplain.demo.databinding.taskcontrol.rx_base.res_info;
 
 /**
  * Created by kennethyeh on 2017/12/17.

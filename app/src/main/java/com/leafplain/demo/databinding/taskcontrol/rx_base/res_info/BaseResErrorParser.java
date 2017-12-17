@@ -1,4 +1,4 @@
-package com.leafplain.demo.databinding.taskcontrol.rx_base;
+package com.leafplain.demo.databinding.taskcontrol.rx_base.res_info;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

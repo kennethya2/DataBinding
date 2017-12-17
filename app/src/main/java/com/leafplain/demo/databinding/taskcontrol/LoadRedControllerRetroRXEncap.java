@@ -7,10 +7,10 @@ import com.leafplain.demo.databinding.base.basecontrol.ParsingControllable;
 import com.leafplain.demo.databinding.datamodel.info.APIInfo;
 import com.leafplain.demo.databinding.datamodel.info.ListItemInfo;
 import com.leafplain.demo.databinding.presenter.requestsample.PhotoListPresenter;
-import com.leafplain.demo.databinding.taskcontrol.rx_base.BaseResInfo;
+import com.leafplain.demo.databinding.taskcontrol.rx_base.res_info.BaseResInfo;
 import com.leafplain.demo.databinding.taskcontrol.rx_base.HttpManager;
 import com.leafplain.demo.databinding.taskcontrol.rx_base.HttpParam;
-import com.leafplain.demo.databinding.taskcontrol.rx_base.HttpResErrorInfo;
+import com.leafplain.demo.databinding.taskcontrol.rx_base.res_info.HttpResErrorInfo;
 import com.leafplain.demo.databinding.taskcontrol.rx_base.HttpResSubscriber;
 import com.leafplain.demo.databinding.taskcontrol.rx_base.ResResultFilter;
 
@@ -105,7 +105,7 @@ public class LoadRedControllerRetroRXEncap implements ParsingControllable<PhotoL
         HttpManager.getInstance().startRequest(mHttpParam);
     }
 
-    private ResResultFilter.FilterCallback filterCallback = new ResResultFilter.FilterCallback<List<APIInfo.PhotoInfo>>() {
+    private ResResultFilter.FilterCallback filterCallback = new ResResultFilter.FilterCallback() {
         @Override
         public void onSuccess(BaseResInfo errInfo) {
             Log.d(TAG,"CALL message:"+errInfo.message);

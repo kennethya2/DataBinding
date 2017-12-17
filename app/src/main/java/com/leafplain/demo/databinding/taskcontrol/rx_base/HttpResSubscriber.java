@@ -2,6 +2,10 @@ package com.leafplain.demo.databinding.taskcontrol.rx_base;
 
 import android.util.Log;
 
+import com.leafplain.demo.databinding.taskcontrol.rx_base.res_info.BaseResErrorInfo;
+import com.leafplain.demo.databinding.taskcontrol.rx_base.res_info.HttpResErrorInfo;
+import com.leafplain.demo.databinding.taskcontrol.rx_base.res_info.HttpResErrorParser;
+
 import rx.Subscriber;
 
 /**

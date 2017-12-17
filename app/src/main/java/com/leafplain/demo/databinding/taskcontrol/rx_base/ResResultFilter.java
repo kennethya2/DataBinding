@@ -1,5 +1,7 @@
 package com.leafplain.demo.databinding.taskcontrol.rx_base;
 
+import com.leafplain.demo.databinding.taskcontrol.rx_base.res_info.BaseResInfo;
+
 import rx.functions.Func1;
 
 /**
@@ -9,7 +11,7 @@ import rx.functions.Func1;
 public class ResResultFilter<T> implements Func1<BaseResInfo<T>, T> {
 
     private FilterCallback callback;
-    public interface FilterCallback<T>{
+    public interface FilterCallback{
         void onSuccess(BaseResInfo errInfo);
         void onNotSuccess(BaseResInfo errInfo);
     }

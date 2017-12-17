@@ -1,4 +1,4 @@
-package com.leafplain.demo.databinding.taskcontrol.rx_base;
+package com.leafplain.demo.databinding.taskcontrol.rx_base.res_info;
 
 import com.leafplain.demo.databinding.DevLog;
 
